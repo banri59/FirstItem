@@ -1,7 +1,45 @@
+body {
+  margin: 10px;
+}
+
 ul {
   list-style-type: none;
 }
 
-p {
-  color: orange;
+article:first-of-type {
+  font-size: 140%;
+}
+
+#products > p {
+  color: grey;
+}
+
+h2 + p::first-letter {
+  font-size: 140%;
+  font-weight: bold;
+}
+
+#products + p {
+  color: yellow;
+}
+
+#products ~ p {
+  color: gold;
+}
+
+footer ul li:nth-child(odd) {
+  color: deeppink;
+}
+
+a:link {
+  color: forestgreen;
+}
+
+a:visited {
+  color: dodgerblue;
+}
+
+a:hover,
+a:focus {
+  color: deeppink;
 }
