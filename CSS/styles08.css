@@ -10,8 +10,19 @@ article:first-of-type {
   font-size: 140%;
 }
 
+::selection {
+  background-color: pink;
+}
+
 #products > p {
   color: grey;
+  font-style: italic;
+  border: 1px solid black;
+}
+
+strong {
+  color: initial;
+  border: inherit;
 }
 
 h2 + p::first-letter {
@@ -19,16 +30,41 @@ h2 + p::first-letter {
   font-weight: bold;
 }
 
-#products + p {
-  color: yellow;
+#products + p::after {
+  content: "...";
+  display: block;
 }
 
 #products ~ p {
-  color: gold;
+  color: rgba(235, 205, 12, 0.5);
+}
+
+#products + p {
+  color: hsl(203, 85%, 45%);
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    34deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(68, 220, 251, 1) 76%
+  );
+  border: 10px solid royalblue;
+  border-radius: 50px;
+  box-shadow: 0 0 40px grey;
+}
+
+.box p {
+  font-weight: bold;
+  color: white;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 footer ul li:nth-child(odd) {
-  color: deeppink;
+  color: #ff1493;
 }
 
 a:link {
