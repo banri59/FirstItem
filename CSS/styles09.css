@@ -1,0 +1,57 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body > p {
+  padding: 20px; /*trbl*/
+  border: 5px solid gold;
+  margin: 20px;
+}
+
+.first::before {
+  content: "Hello";
+}
+
+.first {
+  width: 200px;
+  height: 200px;
+  background-color: gold;
+  padding: 20px;
+  border: 10px solid orange;
+  margin-left: 20px;
+  display: inline-block;
+}
+
+.second {
+  width: 150px;
+  height: 150px;
+  background-color: coral;
+  border: 5px solid orange;
+  margin: 20px;
+  overflow: auto;
+  display: inline-block;
+}
+
+.third {
+  width: 20vw; /*20% of the width of the viewpoint*/
+  height: 20vh; /*20% of the height of the viewpoint*/
+  background-color: pink;
+  border: 5px solid orange;
+  margin: 20px;
+  overflow: auto;
+  display: inline-block;
+}
+
+.forth {
+  width: 10rem; /*10 * font size of the root element*/
+  height: 10em;
+  background-color: hsla(303, 73%, 89%);
+  border-top: 5px solid hotpink;
+  margin: 20px;
+}
