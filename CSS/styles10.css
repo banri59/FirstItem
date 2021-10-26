@@ -1,0 +1,61 @@
+body {
+  height: 200vh;
+  margin: 10px;
+}
+
+.boxes {
+  border: 3px solid lightgrey;
+  position: relative;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+}
+
+.box-one {
+  background-color: gold;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.box-two {
+  background-color: tomato;
+}
+
+.box-three {
+  background-color: dodgerblue;
+  position: relative;
+  left: 4rem;
+  bottom: 2rem;
+  z-index: -1;
+}
+
+.box-four {
+  background-color: green;
+  position: fixed;
+  left: 2rem;
+  right: 2rem;
+  top: 0;
+  width: auto;
+}
+
+.tweet {
+  border: 3px solid lightgrey;
+  margin-top: 20px;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.avatar {
+  width: 5rem;
+  height: 5rem;
+  background-color: gold;
+  float: left;
+  margin-right: 0.5rem;
+}
