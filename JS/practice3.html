@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>变量命名</title>
+    <script type="text/JavaScript">
+      function myname() {
+          var myname=prompt("请输入你的姓名:");
+          if(myname!=null)
+          {
+              alert("你好"+myname);
+              var mywin=prompt("请输入网址:","https://www.imooc.com/");
+              if(mywin!=null)
+              {
+                  window.open(mywin,"_blank","top=0,left=0");
+              }
+              else
+              {}
+          }
+          else
+          {
+              alert("你好 my friend!");
+          }
+      }
+    </script>
+  </head>
+  <body>
+    <input type="button" value="点击进入网站" onClick="myname()" />
+  </body>
+</html>
