@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>switch</title>
+    <script type="text/JavaScript">
+
+
+      function schedule(){
+       var myweek =document.getElementById("myWeek").value;//myweek表示星期几变量
+      if(myweek==1||myweek==2){
+        alert("学习理念知识");
+      }
+      else if(myweek==3||myweek==4){
+          alert("到企业实践");
+      }
+      else if(myweek==5){
+          alert("总结经验");
+      }
+      else if(myweek==6||myweek==7){
+          alert("周六、日休息和娱乐");
+      }
+       else{
+           alert("放假");
+       }
+       }
+
+
+
+      /*
+      var myweek=3
+       switch (myweek)
+      {
+       case 1:
+       case 2:
+       document.write("学习理念知识");
+       break;
+       case 3:
+       case 4:
+       document.write("到企业实践");
+       break;
+        case 5:
+       document.write("总结经验");
+       break;
+       case 6:
+       case 7:
+       document.write("周六、日休息和娱乐");
+       break;
+       default:
+       document.write("出现错误了哦！")
+      }
+      */
+    </script>
+  </head>
+  <body>
+    <article>请输入工作日：</article>
+    <input type="text" id="myWeek" />
+    <input type="button" value="查看工作安排" onclick="schedule()" />
+  </body>
+</html>
