@@ -1,0 +1,13 @@
+// 1. 使用commonjs的模块化
+function add(num1, num2) {
+  return num1 + num2;
+}
+
+function mul(num1, num2) {
+  return num1 * num2;
+}
+
+module.export = {
+  add,
+  mul
+}
