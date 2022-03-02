@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 1. 事件在调用的时候没有参数 -->
+      <button @click="btn1Click">按钮1</button>
+      <!-- 2. 在事件定义时，写函数时省略了小括号，但是方法本身是需要一个参数的 -->
+      <!-- <button @click="btn2Click(abc)">按钮2</button> -->
+      <!-- <button @click="btn2Click()">按钮2</button> -->
+      <button @click="btn2Click">按钮2</button>
+      <!-- 3.  方法定义时，我们需要event对象，同时又需要其他参数-->
+      <button @click="btn3Click(abc,$event)">按钮3</button>
+      <button>按钮4</button>
+    </div>
+
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {},
+        methods: {
+          btn1Click() {
+            console.log("btn1Click");
+          },
+          btn2Click(abc) {
+            console.log("-----", abc);
+            // 不写参数则会默认undefined作为参数传入到方法
+            // 不写小括号则会默认浏览器生成的event事件对象作为参数传入到方法
+          },
+
+          btn2Click(abc, event) {
+            console.log("+++++", abc, event);
+            // 直接写event则会将event作为变量或者方法，无法找到就会报错；
+            // 需要event事件对象则需写成$event
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

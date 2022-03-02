@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 注意一：const修饰的标识符被赋值之后，不能修改。原理：内存地址不能修改。
+      // const name = 'adc';
+      // name = 'aaa';
+
+      //注意二：在使用const定义标识符时，必须赋值。
+      // const name;
+
+      //注意三：常量的含义是指向的对象不能修改，但是可以改变对象内部的属性。
+      const obj = {
+        name: "aaa",
+        age: 18,
+        height: "1.88",
+      };
+
+      obj.name = "Kobe Bryant";
+      obj.age = 40;
+      odj.height = 1.78;
+    </script>
+  </body>
+</html>

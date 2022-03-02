@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 3. 使用组件 -->
+    </div>
+
+    <script>
+      // 1. 创建第一个组件构造器(子组件)
+      const cpnC1 = Vue.extend({
+        template: `
+       <div>
+        <h2>我是标题1</h2>
+        <p>我是内容，你好</p>
+       </div>
+      `,
+      });
+
+      // 2. 创建第二个组件构造器(父组件)
+      const cpnC2 = Vue.extend({
+        template: `
+       <div>
+        <h2>我是标题2</h2>
+        <p>我是内容，再见</p>
+       </div>
+      `,
+        components: {
+          cpn1: cpnC1,
+        },
+      });
+
+      const app = new Vue({
+        el: "#app",
+        data: {},
+        components: {
+          cpn2: cpnC2,
+          cpn1: cpnC1,
+        },
+      });
+
+      // 父子组件的错误用法: 以子标签的形式在Vue实例中使用
+      // Vue先在父组件中的components里面找是否注册子组件，没有找到会再找全局组件，还没找到就会报错
+    </script>
+  </body>
+</html>

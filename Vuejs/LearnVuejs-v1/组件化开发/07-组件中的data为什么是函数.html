@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <cpnCounter></cpnCounter>
+      <cpnCounter></cpnCounter>
+      <cpnCounter></cpnCounter>
+    </div>
+
+    <template id="cpnCounter">
+      <div>
+        <h2>当前计数: {{counter}}</h2>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+      </div>
+    </template>
+
+    <script src="vue.js"></script>
+    <script>
+      // 注册组件
+      const app = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        components: {
+          cpnCounter: {
+            template: `#cpnCounter`,
+            data() {
+              // data是函数的原因: 保证每个组件不会共用一个对象，即不会互相影响
+              // 原理: 每个对象对应的是一个内存地址，如果data是一个对象，那么每次使用组件都会共用同一个data对象；
+              // 原理: 如果data是一个函数，并且返回一个对象，它都会创建一些新的变量，所以每个组件都有自己的对象。
+              return {
+                counter: 0,
+              };
+            },
+            methods: {
+              increment() {
+                this.counter++;
+              },
+              decrement() {
+                this.counter--;
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

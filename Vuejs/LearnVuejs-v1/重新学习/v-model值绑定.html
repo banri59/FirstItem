@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <label for="">
+        <input
+          type="checkbox"
+          v-for="hobby in originHobbies"
+          :id="hobby"
+          :value="hobby"
+          v-model="hobbies"
+        />{{hobby}}
+      </label>
+    </div>
+
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          hobbies: [],
+          originHobbies: [
+            "篮球",
+            "足球",
+            "羽毛球",
+            "台球",
+            "高尔夫球",
+            "乒乓球",
+            "棒球",
+          ],
+        },
+        methods: {},
+      });
+    </script>
+  </body>
+</html>

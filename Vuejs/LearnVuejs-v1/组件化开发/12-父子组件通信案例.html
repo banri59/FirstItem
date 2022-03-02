@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <childCpn
+        :number1="num1"
+        :number2="num2"
+        @num1Change="num1Change"
+        @num2Change="num2Change"
+      />
+    </div>
+
+    <template id="childCpn">
+      <div>
+        <h2>props: {{number1}}</h2>
+        <h2>data: {{dnumber1}}</h2>
+        <input type="text" :value="dnumber1" @input="num1Input" />
+        <h2>props: {{number2}}</h2>
+        <h2>data: {{dnumber2}}</h2>
+        <input type="text" :value="dnumber2" @input="num2Input" />
+      </div>
+    </template>
+
+    <script src="vue.js"></script>
+    <script>
+      // 父组件Vue实例
+      const app = new Vue({
+        el: '#app',
+        data: {
+          num1 = 1,
+          num2 = 0
+        },
+        methods: {
+          num1Change(value) {
+            this.num1 = parseInt(value)
+          },
+          num2Change(value) {
+            this.num2 = parseInt(value);
+          },
+        },
+        components: {
+          // 子组件
+          childCpn: {
+            template: `#childCpn`,
+            props: {
+              number1: Number,
+              number2: Number
+            },
+            data() {
+              return {
+                dnumber1 = number1,
+                dnumber2 = number2
+              }
+            },
+            methods: {
+              num1Input(event) {
+                // 1. 将input中的value赋值给dnumber1
+                this.dnumber1 = event.target.value;
+                // 2. 为了让父组件可以修饰dnumber1的值，发送一个事件
+                this.$emit('num1Change', this.dnumber1);
+                // 3. 修饰dnumber2的值
+                this.dnumber2 = this.dnumber1 * 10;
+                // 4. 为了让父组件可以修饰dnumber2的值，发送一个事件
+                this.$emit('num2Change', this,dnumber2)
+              },
+              num2Input(event) {
+                this.dnumber2 = event.target.value;
+                this.$emit('num2Change', this.dnumber2);
+                this.dnumber1 = this.dnumber2 / 10;
+                this.$emit('num1Change', this,dnumber1)
+              },
+
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
+<!-- 需求一: 父组件中的num1, num2与子组件中的input实现双向绑定 -->
+<!-- 需求二: num2是num1数值的10倍，且num1发生变化时, num2随之变化; 反之也变化 -->

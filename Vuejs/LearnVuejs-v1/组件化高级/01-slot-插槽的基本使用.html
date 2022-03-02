@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 1. slot插槽的基本使用, 在子组件模版中插入slot标签, 在父组件模版中的子组件标签之间插入决定添加的元素 -->
+      <!-- 1. 
+      <cpn><button>按钮</button></cpn>
+      <cpn><span>你好</span></cpn>
+      <cpn><i>再见</i></cpn>
+      <cpn><button>按钮</button></cpn>
+     -->
+      <!-- 2. slot标签内添加默认值 -->
+      <cpn></cpn>
+      <cpn><span>你好</span></cpn>
+      <!-- 3. 组件内如果有多个元素同时添加, 那么所有插入的元素会替换掉默认值, 一起显示出来 -->
+      <cpn>
+        <span>你好</span>
+        <i>再见</i>
+        <button>按钮</button>
+      </cpn>
+      <cpn></cpn>
+    </div>
+
+    <template id="cpn">
+      <h2>我是子组件</h2>
+      <p>hello world!</p>
+      <!-- 1. <slot></slot> -->
+      <!-- 2. -->
+      <slot><button>按钮</button></slot>
+    </template>
+
+    <script src="vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        components: {
+          template: `#cpn`,
+        },
+      });
+    </script>
+  </body>
+</html>

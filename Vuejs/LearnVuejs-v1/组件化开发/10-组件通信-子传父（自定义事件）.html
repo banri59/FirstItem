@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 父组件模版 -->
+    <div id="app">
+      <cpn @itemClick="cpnClick"></cpn>
+    </div>
+
+    <!-- 子组件模版 -->
+    <template id="cpn">
+      <div>
+        <button v-for="item in categories" @click="itemClick">{{item}}</button>
+      </div>
+    </template>
+
+    <script src="vue.js"></script>
+    <script>
+      // 子组件
+      const cpn = {
+        template: `#cpn`,
+        data() {
+          return {
+            categories: [
+              { id: "recommend", name: "热门推荐" },
+              { id: "mobile digital", name: "手机数码" },
+              { id: "household appliances", name: "家用家电" },
+              { id: "computer office", name: "电脑办公" },
+            ],
+          };
+        },
+        methods: {
+          itemClick(item) {
+            this.$emit("itemClick", item);
+          },
+        },
+      };
+      // 父组件
+      const app = new Vue({
+        el: "#app",
+        data: {},
+        methods: {
+          cpnClick(item) {
+            console.log("cpnClick", item);
+          },
+        },
+        components: {
+          cpn,
+        },
+      });
+    </script>
+  </body>
+</html>

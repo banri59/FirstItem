@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <ul>
+        <!-- 
+            官方推荐我们在使用v-for的时候，给对应的元素或组建天津爱上一个:key属性。
+            为什么需要:key属性？
+            因为它和Vue的虚拟DOM的Diff算法有关系，当某一层有很多相同的节点时，即列表节点时，我们希望插入一个新的节点。
+            比如在B和C之间添加一个F，Diff算法默认执行如下：把C更新成F，D更新成C，E更新成D，最后再插入E，这样做很没有效率。
+            所以我们需要使用key来给每一个节点做一个唯一标识，在使用v-for时，在相应的li标签中添加:key="item"。
+            注意，显示的内容要和key一一对应。因此:key="index"是没有意义的，并不能提升更新虚拟DOM的效率。
+            使用key给每个节点唯一标识之后，Diff算法接可以正确地识别此节点，并找到正确的位置插入新节点。
+            所以，key的作用主要是高效地更新虚拟DOM。
+         -->
+        <li v-for="item in letters" :key="item">{{item}}</li>
+      </ul>
+    </div>
+
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          letters: ["A", "B", "C", "D", "E"],
+          // app.item,splice(2, 0, 'F') 指的是在第二个位置不删除任何元素，而插入‘F’
+          // app.item.push('F') 指的是在最后插入‘F’
+        },
+      });
+    </script>
+  </body>
+</html>

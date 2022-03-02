@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <cpn></cpn>
+      <cpn></cpn>
+      <cpn refs="aaa"></cpn>
+      <button @click="btnClick">按钮</button>
+    </div>
+
+    <template id="cpn">
+      <div>
+        <h2>{{name}}</h2>
+      </div>
+    </template>
+
+    <script src="vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {},
+        methods: {
+          btnClick() {
+            // 1. $children
+            // console.log(this.$children[0].showMessage());
+            // this.$children[0].showMessage();
+            // this.$children[2].name; // 这样不好，因为索引值会因为在实际编程中在该子组件之前插入了新的子组件而改变
+            // for(let child of this.$children) {
+            //   console.log(child.name);
+            //   child.showMessage();
+            // }
+            // 2. $refs, 必须在需要访问的子组件标签内加上refs="xxx", xxx相当于该子组件的key,
+            // 并且在父组件中也要加上key, 格式为this.$refs.xxx.<子组件的属性或方法>
+            // refs在实际中很常用
+            console.log(this.$refs.aaa.name);
+            this.$refs.aaa.showMessage();
+          },
+        },
+        components: {
+          cpn: {
+            template: `#cpn`,
+            data() {
+              return {
+                name: "我是子组件的name",
+              };
+            },
+            methods: {
+              showMessage() {
+                console.log("showMessage");
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

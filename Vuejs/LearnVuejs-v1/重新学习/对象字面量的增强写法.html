@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const name = "";
+      const age = 18;
+      const height = 1.88;
+
+      //1. 属性的增强写法
+      // ES5中的写法
+      const obj = {
+        name: name,
+        age: age,
+        height: height,
+      };
+
+      // ES6中的写法
+      const obj = {
+        name,
+        age,
+        height,
+      };
+
+      //2. 函数的增强写法
+      // ES5中的写法
+      const obj = {
+        fullName: function () {},
+      };
+
+      // ES6中的写法
+      const obj = {
+        fullName() {},
+      };
+    </script>
+  </body>
+</html>

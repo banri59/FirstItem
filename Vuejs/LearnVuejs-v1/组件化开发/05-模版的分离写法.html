@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <myCpn1></myCpn1>
+      <myCpn2></myCpn2>
+    </div>
+
+    <!-- 1. script标签，注意: 类型必须是text/x-template -->
+    <script type="text/x-template" id="myCpn1">
+      <div>
+        <h2>我是标题</h2>
+        <p>我是内容，你好</p>
+      </div>
+    </script>
+
+    <!-- 2. template标签 -->
+    <template id="myCpn2">
+      <div>
+        <h2>我是标题</h2>
+        <p>我是内容，你好</p>
+      </div>
+    </template>
+
+    <script src="vue.js"></script>
+    <script>
+      // 1. 全局组件的模版分离
+      Vue.component(`myCpn1`, {
+        template: `#myCpn1`,
+      });
+
+      // 2. 局部组件的模版分离
+      const app = new Vue({
+        el: "#app",
+        data: {},
+        components: {
+          myCpn2: {
+            template: `#myCpn2`,
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

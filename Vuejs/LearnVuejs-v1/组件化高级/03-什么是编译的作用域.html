@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <!-- 疑问: 两个v-show是显示还是不显示呢? -->
+
+  <body>
+    <div id="app">
+      <!-- 1. v-show的作用域此时是父组件即Vue实例，因此结果是显示 -->
+      <cpn v-show="isShow"></cpn>
+    </div>
+
+    <template>
+      <div>
+        <h2>我是子组件</h2>
+        <p>我是内容</p>
+        <!-- 2. v-show的作用域此时是子组件即cpn，因此结果是不显示 -->
+        <buttton v-show="isShow">按钮</buttton>
+      </div>
+    </template>
+
+    <script src="vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "你好",
+          isShow: true,
+        },
+        methods: {},
+        components: {
+          cpn: {
+            template: `#cpn`,
+            isShow: false,
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

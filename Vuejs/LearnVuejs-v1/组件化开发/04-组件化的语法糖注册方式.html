@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 3. 使用组件 -->
+      <cpn1></cpn1>
+      <cpn2></cpn2>
+    </div>
+
+    <script>
+      // 1. 全局组件没有语法糖的注册方式: 1. 创建组件构造器对象，2. 注册组件
+      // const cpnC1 = Vue.extend({
+      //   template: `
+      //     <div>
+      //       <h2>我是标题1</h2>
+      //       <p>我是内容，你好</p>
+      //     </div>
+      //   `,
+      // });
+
+      // Vue.component("cpn1", cpnC1);
+
+      // 1. 全局组件的语法糖注册方式
+      Vue.component("cpn1", {
+        template: `
+          <div>
+            <h2>我是标题1</h2>
+            <p>我是内容，你好</p>
+          </div>
+        `,
+      });
+
+      // 2. 局部组件没有语法糖的注册方式
+      const cpnC2 = Vue.extend({
+        template: `
+          <div>
+            <h2>我是标题2</h2>
+            <p>我是内容，再见</p>
+          </div>
+        `,
+      });
+
+      const app = new Vue({
+        el: "#app",
+        data: {},
+        components: {
+          cpn2: cpnC2,
+        },
+      });
+
+      // 2. 局部组件语法糖的注册方式
+      const app = new Vue({
+        el: "#app",
+        data: {},
+        components: {
+          cpn2: {
+            template: `
+              <div>
+                <h2>我是标题2</h2>
+                <p>我是内容，再见</p>
+              </div>
+            `,
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

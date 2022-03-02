@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 1. 在遍历的过程中，没有获取索引值（下标值） -->
+      <h2 v-for="item in names">{{item}}</h2>
+
+      <!-- 2. 在遍历的过程中，获取索引值 -->
+      <h2 v-for="(item, index) in names">{{index+1}}-{{item}}</h2>
+    </div>
+
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          names: ["why", "shino", "dolly", "kobe"],
+        },
+      });
+    </script>
+  </body>
+</html>

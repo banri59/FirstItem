@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 1. lazy修饰符的使用 -->
+      <!-- 当不需要input输入框的内容与data实时绑定时，可以添加lazy修饰符 -->
+      <!-- 添加lazy修饰符之后只有当回车或者失去焦点时才会更新 -->
+      <label for="name">
+        <input type="text" id="name" v-model.lazy="name" />
+        <h2>您输入的姓名是: {{name}}</h2>
+      </label>
+
+      <!-- 2. number修饰符的使用 -->
+      <!-- v-model默认数据类型是string -->
+      <!-- 当添加上number修饰符时可以将数据类型转化为number -->
+      <label for="age">
+        <input type="number" id="age" v-model.number="age" />
+        <h2>您输入的年龄为: {{typeof age}}-{{age}}</h2>
+      </label>
+
+      <!-- 3. trim修饰符的使用 -->
+      <!-- trim作用: 清除掉v-model所绑定的data数据中的空格 -->
+      <label for="message">
+        <input type="text" id="message" v-model.trim="message" />
+        <h2>您输入的内容为: {{message}}</h2>
+      </label>
+    </div>
+
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          name: "",
+          age: "",
+          message: "你好",
+        },
+      });
+    </script>
+  </body>
+</html>
